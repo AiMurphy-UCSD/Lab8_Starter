@@ -9,7 +9,14 @@ self.addEventListener('install', function (event) {
     caches.open(CACHE_NAME).then(function (cache) {
       // B6. TODO - Add all of the URLs from RECIPE_URLs here so that they are
       //            added to the cache when the ServiceWorker is installed
-      return cache.addAll([]);
+      return cache.addAll([
+        'https://adarsh249.github.io/Lab8-Starter/recipes/1_50-thanksgiving-side-dishes.json',
+        'https://adarsh249.github.io/Lab8-Starter/recipes/2_roasting-turkey-breast-with-stuffing.json',
+        'https://adarsh249.github.io/Lab8-Starter/recipes/3_moms-cornbread-stuffing.json',
+        'https://adarsh249.github.io/Lab8-Starter/recipes/4_50-indulgent-thanksgiving-side-dishes-for-any-holiday-gathering.json',
+        'https://adarsh249.github.io/Lab8-Starter/recipes/5_healthy-thanksgiving-recipe-crockpot-turkey-breast.json',
+        'https://adarsh249.github.io/Lab8-Starter/recipes/6_one-pot-thanksgiving-dinner.json',
+      ]);
     })
   );
 });
@@ -37,4 +44,31 @@ self.addEventListener('fetch', function (event) {
   // B8. TODO - If the request is in the cache, return with the cached version.
   //            Otherwise fetch the resource, add it to the cache, and return
   //            network response.
+  event.respondWith(
+    caches.open(CACHE_NAME).then(async function (cache) {
+      // B7. Try to match the request in the cache
+      const cachedResponse = await cache.match(event.request);
+      if (cachedResponse) {
+        // B8. If found in cache, return it
+        return cachedResponse;
+      }
+
+      try {
+        // If not in cache, fetch from the network
+        const networkResponse = await fetch(event.request);
+
+        // Add a clone of the response to the cache for future requests
+        cache.put(event.request, networkResponse.clone());
+
+        // Return the network response
+        return networkResponse;
+      } catch (error) {
+        // If fetch fails (e.g. offline), let the error bubble up or handle it here
+        return new Response('Network error occurred.', {
+          status: 408,
+          statusText: 'Network Error',
+        });
+      }
+    })
+  );
 });

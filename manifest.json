@@ -1,9 +1,9 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Lab8_Starter",
+    "short_name": "Aidan Murphy",
     "description": "",
-    "start_url": "",
-    "display": "",
+    "start_url": "http://127.0.0.1:5500/index.html",
+    "display": "minimal-ui",
     "background_color": "",
     "theme_color": "",
     "icons": [
@@ -11,6 +11,50 @@
         "src": "/assets/images/icons/icon-192x192.png",
         "sizes": "192x192",
         "type": "image/png"
+      },
+      {
+        "src": "/assets/images/icons/icon-256x256.png",
+        "sizes": "256x256",
+        "type": "image/png"
+      },
+      {
+        "src": "/assets/images/icons/icon-384x384.png",
+        "sizes": "384x384",
+        "type": "image/png"
+      },
+      {
+        "src": "/assets/images/icons/icon-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      },
+      {
+        "src": "/assets/images/icons/arrow-down.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      },
+      {
+        "src": "/assets/images/icons/0-star.svg",
+        "type": "image/svg"
+      },
+      {
+        "src": "/assets/images/icons/1-star.svg",
+        "type": "image/svg"
+      },
+      {
+        "src": "/assets/images/icons/2-star.svg",
+        "type": "image/svg"
+      },
+      {
+        "src": "/assets/images/icons/3-star.svg",
+        "type": "image/svg"
+      },
+      {
+        "src": "/assets/images/icons/4-star.svg",
+        "type": "image/svg"
+      },
+      {
+        "src": "/assets/images/icons/5-star.svg",
+        "type": "image/svg"
       }
     ]
   }
